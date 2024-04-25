@@ -1,7 +1,9 @@
 "use strict"
 
 const idr = require('../helpers/helper')
-const {Category} = require('../models')
+const {Category} = require('../models');
+const {User, UserProfile} = require('../models/index');
+const bcrypt = require('bcryptjs');
 
 class Contoller {
     static showHome(req, res) {
@@ -31,9 +33,9 @@ class Contoller {
            let newUser =  await User.create({
                 username,
                 password,
-                level,
                 email
                })
+            
 
             await UserProfile.create({
                     fullName,
@@ -43,8 +45,10 @@ class Contoller {
                     nik,
                     UserId : newUser.id
                 })
+                console.log('berhasil registrasi user')
                 res.redirect("/")
-            console.log(req.body)
+
+          //  console.log(req.body)
 
         } catch (error) {
             res.send(error.message);
@@ -52,26 +56,45 @@ class Contoller {
         }
     }
 
+    static async postLoginUser(req, res) {
+        try {
+           let { username, password} = req.body
+           
+           let findUser =  await User.findOne({
+               where: {username}
+               })
+
+               if(findUser){
+                    const isValidPassword = bcrypt.compareSync(password, findUser.password);
+
+                    if(isValidPassword){
+                        req.session.userId = findUser.id
+                        return res.redirect("/homeLogin")
+                    }else{
+                        const error = 'invalid username/password'
+                        return res.redirect(`/?error=${error}`)
+                    }
+               }
+
+               console.log(findUser)
+               console.log("berhasil")
+        } catch (error) {
+            res.send(error.message);
+            console.log(error)
+        }
+    }
     
-    static async showRooms(req, res) {
+    static async showHomeLogin(req, res) {
         try {
-            let dataRooms = await Room.findAll()
-            res.render('viewRoom', {dataRooms})
-
+           // let dataRooms = await Room.findAll()
+            res.render('viewHomeLogin')
+            console.log(`ini id nya = ${req.session.userId}`)
         } catch (error) {
             res.send(error.message)
         }
     }
 
-    static async showBooking(req, res) {
-        try {
-            let dataSchedule = await Schedule.findAll()
-            res.render('viewBooking', {dataSchedule})
-
-        } catch (error) {
-            res.send(error.message)
-        }
-    }
+    
 
     static async showUserProfile(req, res) {
         try {
