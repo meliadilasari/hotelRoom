@@ -23,13 +23,32 @@ class Contoller {
         }
     }
 
-    static async postAddUser(req, res) {
+    static async postRegisterUser(req, res) {
         try {
+           let {fullName, username, gender, dateOfBirth, address, nik, email, password} = req.body
             // let dataCategory = await Category.findAll()
             // res.render('viewCategory', {dataCategory, idr})
+           let newUser =  await User.create({
+                username,
+                password,
+                level,
+                email
+               })
+
+            await UserProfile.create({
+                    fullName,
+                    gender,
+                    dateOfBirth,
+                    address,
+                    nik,
+                    UserId : newUser.id
+                })
+                res.redirect("/")
+            console.log(req.body)
 
         } catch (error) {
-            res.send(error.message)
+            res.send(error.message);
+            console.log(error)
         }
     }
 
