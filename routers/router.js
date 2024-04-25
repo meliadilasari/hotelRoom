@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.get('/', Contoller.showHome);
 router.get('/categories', Contoller.showCategory);
-//router.post('/addUser',Contoller.postAddUser);
+router.post('/register',Contoller.postRegisterUser);
 //router.get("/rooms",Contoller.showRooms);
 //router.get("/bookings",Contoller.showBooking);
 //router.post('/addBooking',Contoller.postAddBooking);

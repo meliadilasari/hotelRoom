@@ -105,7 +105,8 @@ header {
 }
 
 .wrapper.active {
-    height: 520px;
+    height: 600px;
+    width: 800px;
 }
 
 .wrapper .contact-box {
@@ -125,7 +126,7 @@ header {
 
 .wrapper.active .form-box.login {
     transition: none;
-    transform: translateX(-400px);
+    transform: translateX(-4000px);
 }
 
 .wrapper .form-box.register {
@@ -172,7 +173,7 @@ header {
 
 .input-box label {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 5px;
     transform: translateY(-50%);
     font-size: 1em;
@@ -189,7 +190,7 @@ header {
 
 .input-box input {
     width: 100%;
-    height: 100%;
+    height: 50%;
     background: transparent;
     border: none;
     outline: none;
