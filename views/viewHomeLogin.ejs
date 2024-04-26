@@ -14,16 +14,96 @@
         <h2 class="logo">UrHotel</h2>
         <nav class="navigation">
             <a href="/">Home</a>
-            <a href="/">About</a>
+            <!-- <a href="/">About</a> -->
             <a href="/categories">Types</a>
-            <a class="contact-link" href="/">Contact</a>
-            <button class="btnLogin-popup">Login</button>
+            <a class="contact-link" href="/">Booking</a>
+            <a href="/logout" class="btnLogin-popup btn" >Logout</a>
         </nav>
     </header>
     
+    <section style="margin-bottom:200px ; width: 1100px;">
+        
+        
+        <div class="row" style="margin-top: 100px;" >
+            <h4 class="text-md-end">Welcome Back! </h4>
+            <div class="col-sm-3" >
+                 
+              <div class="card">
+                
+                <div class="card-body" style="width: 600px;">
+                  <h5 class="card-title">Info</h5>
+                  <p class="card-text" >room booked:</p>
+                  <a href="#" style="width: 130px;" class="btn btn-primary">Book a room</a>
+                </div>
+              </div>
             </div>
-        </div>
-    </div>
+            <div class="col-sm-9">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">User Profile</h5>
+                  <form style="width: 300px; ">
+                    <div class="form-group row" style="width: 800px;">
+                      <label for="fullName" class="col-sm-2 col-form-label">full Name</label>
+                      <div class="col-sm-10" >
+                        <input type="text" readonly class="form-control-plaintext"  id="fullName" value="<%= data.UserProfile.fullName%>">
+                      </div>
+                    </div>
+                    <div class="form-group row" style="width: 800px;" >
+                      <label for="gender" class="col-sm-2 col-form-label">NIK</label>
+                      <div class="col-sm-6">
+                        <input type="text" readonly class="form-control" id="gender" placeholder="<%= data.nik%>" value="<%= data.UserProfile.nik%>">
+                      </div>
+                    </div>
+                    <div class="form-group row" style="width: 800px;">
+                        <label for="gender" class="col-sm-2 col-form-label" >gender</label>
+                        <div class="col-sm-6">
+                            
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="inlineCheckbox2" value="Male" <%= data.UserProfile.gender === 'Male' ? 'checked' : '' %>disabled>
+                                <label class="form-check-label" for="inlineCheckbox2">
+                                    Male
+                                </label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="inlineCheckbox3" value="Female"  <%= data.UserProfile.gender === 'Female' ? 'checked' : '' %> disabled>
+                                <label class="form-check-label" for="inlineCheckbox3">Female</label>
+                              </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group row" style="width: 800px;" >
+                        <label for="date" class="col-sm-2 col-form-label">Date of Birth</label>
+                        <div class="col-sm-6">
+                          <input type="date" readonly class="form-control" id="date" placeholder="gender" value="<%= data.UserProfile.dateOfBirth%>">
+                        </div>
+                      </div> -->
+                   
+                      <div class="form-group row" style="width: 800px;" >
+                        <label for="address" class="col-sm-2 col-form-label">Address</label>
+                        <div class="col-sm-6">
+                          <input type="text" readonly class="form-control" id="address" placeholder="address" value="<%= data.UserProfile.address%>">
+                        </div>
+                      </div>
+
+                      <div class="form-group row" style="width: 800px;" >
+                        <label for="username" class="col-sm-2 col-form-label">Username</label>
+                        <div class="col-sm-6">
+                          <input type="text" readonly class="form-control" id="username" placeholder="Username" value="<%= data.username%>" >
+                        </div>
+                      </div>
+
+                      <div class="form-group row" style="width: 800px;" >
+                        <label for="email" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-6">
+                          <input type="email" readonly class="form-control" id="email" placeholder="email" value="<%= data.email%>">
+                        </div>
+                      </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
 
     <script src="/scripts/script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

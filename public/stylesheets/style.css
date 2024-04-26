@@ -105,6 +105,8 @@ header {
 }
 
 .wrapper.active {
+    margin-top: 80px;
+    padding-top: 80px;
     height: 600px;
     width: 800px;
 }
@@ -207,7 +209,13 @@ header {
     color: #162938;
     line-height: 57px;
 }
-
+.input-box.date-of-birth label {
+    position: absolute;
+    top: -30px; /* Adjust this value as needed to position the label */
+    left: 5px;
+    transform: translateY(0);
+    transition: none;
+}
 .remember-forgot {
     font-size: .9em;
     color: #162938;

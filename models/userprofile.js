@@ -18,7 +18,23 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.STRING,
     dateOfBirth: DataTypes.DATE,
     address: DataTypes.STRING,
-    nik: DataTypes.INTEGER,
+    nik: {
+      type: DataTypes.INTEGER,
+      allowNull:false,
+      validate: {
+        notEmpty : {
+          args : true,
+          msg : 'nik is Required'
+        },notNull: {
+          
+          msg: 'nik is Required'
+        },
+        isNumeric: {
+          args : true,
+          msg: 'Only numbers can be inputted in NIK.'
+        }
+      }
+    },
     UserId: DataTypes.INTEGER
   }, {
     sequelize,
